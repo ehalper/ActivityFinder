@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Activity Finder</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    
+  </head>
+  <body style="background-color:rgb(129, 189, 207);"></body>
+
+  <body>
+  <h1 style="text-align:center">Quarantine Activity Finder</h1>
+  
+  <p 
+  
+  style="text-align:center; color: #130c72; font-size:125%;">
+
+  <script>
+  //print date and time
+  
+    var date = new Date();
+   
+    if (date.getMinutes().toString().length == 1) {
+      min = '0'+date.getMinutes();
+    } else {
+      min= date.getMinutes();
+    }
+
+    if (date.getHours().toString().length == 1) {
+      hour = '0'+date.getHours();
+    } else {
+      hour = date.getHours();
+    }
+
+    if (date.getHours() >= 12) {
+      timeOfDay = 'PM';
+    } else {
+      timeOfDay = 'AM';
+    }
+    month = ['January','Feburary','March','April','May','June','July','August','September','October','November','December'];
+    day = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+    document.write(day[date.getDay()]+', '+month[date.getMonth()]+' '+date.getDate()+', '+date.getFullYear()+' '+(hour-12)+':'+min+' '+timeOfDay);
+  
+  </script>
+ </p>
+
+  <h2 style="text-align:center">Are you bored yet?
+    Just enter in your city to find out how you can spend your day based on the current weather forecast!</h2>
+  
+  <br>
+  <br>
+  <img class="foo" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F28%2F2020%2F04%2F03%2Fvirtual-escapes-VIRTUALTLEDIT0420.jpg" width="900" height ="400" text-align="center"/>
+
+    <div class="container">
+      
+      <fieldset>
+        
+        <p id="demo"></p>
+        <form action="/" method="post">
+         
+
+          <input name="city" type="text" class="ghost-input" placeholder="Enter your city" required>
+          <input type="submit" class="ghost-button" value="Get activity">
+        
+        </form>
+        <% if(locals.weather !== null){ %>
+          <p><%= locals.weather %></p>
+          <% } %>
+          
+          <% if(locals.error !== null){ %>
+          <p><%= locals.error %>
+          </p>
+          <% } %>
+       
+      </fieldset>
+    </div>
+  </body>
+</html>
